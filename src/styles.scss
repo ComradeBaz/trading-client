@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@import "app/core/scss/abstracts/variables.scss";
+@import "app/core/scss/abstracts/mixins.scss";
+@import "app/core/scss/utilities/flex-layout-helpers.scss";
+@import "app/core/scss/utilities/width-helpers.scss";
+@import "app/core/scss/base/base.scss";
+@import "app/core/scss/layout/list.scss";
+
+@import "app/core/scss/components/app-component.scss";

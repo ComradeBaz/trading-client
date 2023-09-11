@@ -1,0 +1,172 @@
+.flex-column-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    min-height: 100%;
+    border-radius: 0.5rem;
+
+    &-row-space-between {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    &-row {
+        display: flex;
+        flex-direction: row;
+        min-width: 100%;
+
+        &-hightlight {
+            background-color: $color-gray-primary;
+        }
+
+        &-space-around {
+            display: flex;
+            justify-content: space-around;
+        }
+
+         &-column-auto {
+            display: flex;
+            width: auto;
+
+            &-highlight {
+                background-color: $color-gray-primary;
+                border-radius: 0.5rem;
+                min-height: 40rem;
+            }
+
+            &-remove-top-border-radius {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+        }
+
+        &-column-full {
+            display: flex;
+            width: 100%;
+
+            &-highlight {
+                background-color: $color-gray-primary;
+                border-radius: 0.5rem;
+                min-height: 40rem;
+            }
+
+            &-remove-top-border-radius {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+        }
+
+        &-column-ninety {
+            display: flex;
+            width: 90%;
+
+            &-highlight {
+                background-color: $color-gray-primary;
+                border-radius: 0.5rem;
+                min-height: 40rem;
+            }
+        }
+
+        &-column-eighty {
+            display: flex;
+            width: 80%;
+
+            &-highlight {
+                background-color: $color-gray-primary;
+                border-radius: 0.5rem;
+                min-height: 40rem;
+            }
+        }
+
+        &-column-sixty {
+            display: flex;
+            width: 60%;
+
+            &-highlight {
+                background-color: $color-gray-primary;
+                border-radius: 0.5rem;
+                min-height: 40rem;
+            }
+        }
+
+        &-column-fifty {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 50%;
+            //flex-grow: 1;
+
+            &-highlight {
+                background-color: $color-gray-primary;
+                border-radius: 0.5rem;
+                min-height: 40rem;
+            }
+
+            &-remove-top-border-radius {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+        }
+
+        &-column-fifty-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50%;
+
+            &-highlight {
+                background-color: $color-gray-primary;
+                border-radius: 0.5rem;
+                min-height: 40rem;
+            }
+        }
+
+        &-column-fourty {
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+
+            &-highlight {
+                background-color: $color-gray-primary;
+                border-radius: 0.5rem;
+                min-height: 40rem;
+            }
+        }
+
+        &-column-thirty-five {
+            display: flex;
+            flex-direction: column;
+            width: 35%;
+
+            &-highlight {
+                background-color: $color-gray-primary;
+                border-radius: 0.5rem;
+                min-height: 40rem;
+            }
+        }
+
+        &-column-thirty {
+            display: flex;
+            flex-direction: column;
+            min-width: 30%;
+
+            &-highlight {
+                background-color: $color-gray-primary;
+            }
+        }
+    }
+}
+
+.center__in__flex__container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.center__item__in__flex__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}

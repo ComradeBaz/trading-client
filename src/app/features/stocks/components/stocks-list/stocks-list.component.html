@@ -1,0 +1,11 @@
+<div class="flex-column-container" *ngIf="stocksList.length > 0">
+    <ul class="custom-list">
+        <li *ngFor="let stock of stocksList">
+            <app-stocks-list-item style="width: 100%;" [stockItem]="stock"></app-stocks-list-item>
+        </li>
+    </ul>
+    <div>
+        <button type="button" (click)="onPreviousPage()">Previous</button>
+        <button type="button" (click)="onNextPage()">Next</button>
+    </div>
+</div>

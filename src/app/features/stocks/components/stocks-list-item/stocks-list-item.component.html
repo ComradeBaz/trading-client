@@ -1,0 +1,10 @@
+
+    <div style="display: flex; width: 100%;" *ngIf="stockItem !== undefined" (click)="onSelectStock(stockItem)">
+        <div class="stocks-list-container-row">
+            <span class="thirty-percent">{{ stockItem.symbol }}</span>
+            <span class="thirty-percent">{{ stockItem.exchange }}</span>
+            <span class="fourty-percent">{{ stockItem.country }}</span>
+        </div>
+    
+    </div>
+
