@@ -56,28 +56,25 @@ export class StocksDetailComponent implements OnInit, OnDestroy {
           this.lowValuesData = Object.entries(data.lowValuesMap);
           this.highValuesData = Object.entries(data.highValuesMap);
 
-          console.log(this.closeValuesData);
           this.getChartData();
         });
     }
-
   }
 
   getChartData() {
     this.dataLoaded = false;
     this.closeValueLabels = [];
     this.closeValueValues = [];
-    console.log(this.closeValuesData);
     for (let entry of this.closeValuesData) {
       let label = entry[0].split("T")[1].split(".")[0];
       this.closeValueLabels.push(label);
       this.closeValueValues.push(entry[1]);
     }
-    console.log(this.closeValueLabels);
-    console.log(this.closeValueValues);
-    const chartData: ChartData = new ChartData(this.closeValueLabels, this.closeValueValues);
-    this.uiManagerService.isUpdateStocksClosing.next(chartData);
-    this.dataLoaded = true;
+    if (this.stockItem) {
+      const chartData: ChartData = new ChartData(this.closeValueLabels, this.closeValueValues, this.stockItem?.name);
+      this.uiManagerService.isUpdateStocksClosing.next(chartData);
+      this.dataLoaded = true;
+    }
   }
 
   ngOnChanges() {
@@ -89,21 +86,3 @@ export class StocksDetailComponent implements OnInit, OnDestroy {
   }
 
 }
-
-/**
- * public close: number,
-        public datetime: Date,
-        public high: number,
-        public low: number,
-        public open: number,
-        public volume: number
-
-        metaData
-        public currency: string,
-        public exchange: string,
-        public exchange_timezone: string,
-        public interval: string,
-        public mic_code: string,
-        public symbol: string,
-        public type: string
- */

@@ -36,22 +36,16 @@ export class ChartBaseComponent implements OnInit, OnDestroy {
     this.createChart();
     this.isUpdateStocksClosingEvent = this.uiManagerService.isUpdateStocksClosing
       .subscribe(data => {
-        console.log(data);
-        this.chart?.update();
-        // if (data !== undefined) {
-        //   if (this.chart) {
-        //     this.chart.data.datasets[0].data = [];
-        //     for (let v of data.values) {
-        //       if (this.chart) {
-        //         this.chart.data.datasets[0].data.push(v);
-        //         this.chartLabels = data.labels;
-        //         console.log(this.chart.data.datasets[0].data);
-        //         console.log(this.chartLabels);
-        //       }
-        //     }
-        //     this.chart?.update();
-        //   }
-        // }
+        if (data !== undefined && this.chart) {
+          this.chart.data.datasets[0].data = [];
+          for (let v of data.values) {
+            this.chart.data.datasets[0].data.push(v);
+            this.chartData = data.values;
+            this.chartLabels = data.labels;
+            this.chart.data.datasets[0].label = data.companyName;
+            this.chart?.update();
+          }
+        }
       });
   }
 
@@ -62,7 +56,7 @@ export class ChartBaseComponent implements OnInit, OnDestroy {
         labels: this.chartLabels,
         datasets: [
           {
-            label: "Prod",
+            label: this.chartLabel,
             data: this.chartData,
             backgroundColor: this.backgroundColorProd
           }

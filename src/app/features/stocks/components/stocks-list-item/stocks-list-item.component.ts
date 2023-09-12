@@ -23,16 +23,12 @@ export class StocksListItemComponent implements OnInit {
   }
 
   onSelectStock(stockItem: StockItem) {
-    //this.stocksService.stockDetailSubject.next(stockItem);
     this.getSelectedStock(stockItem);
   }
 
   getSelectedStock(stockItem: StockItem) {
-    //this.stocksList = [];
-    //this.isFetching = true;
     this.stocksService.getStockBySymbolExchangeCountry(stockItem)
       .subscribe(data => {
-        //this.stockItem = data;
         this.stocksService.stockDetailSubject.next(data);
       },
         error => {
