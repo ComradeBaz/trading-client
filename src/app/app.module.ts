@@ -8,6 +8,7 @@ import { StocksListComponent } from './features/stocks/components/stocks-list/st
 import { StocksDetailComponent } from './features/stocks/components/stocks-detail/stocks-detail.component';
 import { StocksListItemComponent } from './features/stocks/components/stocks-list-item/stocks-list-item.component';
 import { StocksWrapperComponent } from './features/stocks/components/stocks-wrapper/stocks-wrapper.component';
+import { ChartBaseComponent } from './shared-components/chart-base/chart-base.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { StocksWrapperComponent } from './features/stocks/components/stocks-wrap
     StocksListComponent,
     StocksDetailComponent,
     StocksListItemComponent,
-    StocksWrapperComponent
+    StocksWrapperComponent,
+    ChartBaseComponent
   ],
   imports: [
     BrowserModule,

@@ -25,7 +25,7 @@ export class StocksWrapperComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Get the list of stocks when the component loads
-    this.onListStocksBySymbol("AMZN");
+    this.onListStocksByExchange("NASDAQ");
     // Set the selected stock item when the user chooses from the list of stocks
     this.stockDetailSubscription = this.stocksService.stockDetailSubject
       .subscribe(data => {
@@ -82,7 +82,10 @@ export class StocksWrapperComponent implements OnInit, OnDestroy {
     this.isFetching = true;
     this.stocksService.getListStocksByExchange(exchange)
       .subscribe(data => {
+        this.isFetching = false;
         this.stocksList = data;
+        this.getPagedListOfStocks();
+        this.currentStockItem = this.stocksList[0];
       },
         error => {
           this.httpError = error;

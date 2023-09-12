@@ -7,3 +7,4 @@
     <p> {{ stockItem.country }} </p>
     <p> {{ stockItem.type }} </p>
 </div>
+<app-chart-base *ngIf="dataLoaded" [chartLabels]="closeValueLabels" [chartData]="closeValueValues"></app-chart-base>

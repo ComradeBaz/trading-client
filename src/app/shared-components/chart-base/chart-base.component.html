@@ -1,0 +1,9 @@
+<div class="software__item__container">
+    <div class="download__container__content__item-detail" style="height: 100%;">
+        <div class="flex__column-container">
+            <span class="custom-h2" *ngIf="isShowTitle">Expiring Licenses</span>
+            <canvas style="width: 100%; height: 100%; cursor: pointer; display: flex" (click)=getIndex($event)
+                id="baseChart" style="cursor: pointer;">{{ chart }}</canvas>
+        </div>
+    </div>
+</div>
