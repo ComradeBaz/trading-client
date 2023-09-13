@@ -79,6 +79,17 @@
             }
         }
 
+        &-column-seventy {
+            display: flex;
+            width: 70%;
+
+            &-highlight {
+                background-color: $color-gray-primary;
+                border-radius: 0.5rem;
+                min-height: 40rem;
+            }
+        }
+
         &-column-sixty {
             display: flex;
             width: 60%;

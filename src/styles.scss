@@ -2,7 +2,11 @@
 @import "app/core/scss/abstracts/mixins.scss";
 @import "app/core/scss/utilities/flex-layout-helpers.scss";
 @import "app/core/scss/utilities/width-helpers.scss";
+@import "app/core/scss/utilities/padding-helpers.scss";
+@import "app/core/scss/utilities/margin-helpers.scss";
 @import "app/core/scss/base/base.scss";
 @import "app/core/scss/layout/list.scss";
+@import "app/core/scss/typography/default-font.scss";
 
 @import "app/core/scss/components/app-component.scss";
+@import "app/core/scss/components/stock-detail-component.scss";

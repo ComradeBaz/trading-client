@@ -1,7 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { StockItem } from '../../models/stock-item';
 import { StocksTimeseriesService } from '../../service/stocks-timeseries.service';
-import { StockDataPoint } from '../../models/timeseries-response';
 import { ChartData } from 'src/app/shared-components/chart-base/models/chart-data';
 import { UiManagerService } from 'src/app/shared-services/ui-manager.service';
 import { Subscription } from 'rxjs';
@@ -20,7 +19,7 @@ export class StocksDetailComponent implements OnInit, OnDestroy {
 
   dataLoaded: boolean = false;
 
-  interval: string = "1min";
+  interval: string = "1day";
   outputsize: string = "30";
 
   closeValuesData: any[] = [];
@@ -66,7 +65,20 @@ export class StocksDetailComponent implements OnInit, OnDestroy {
     this.closeValueLabels = [];
     this.closeValueValues = [];
     for (let entry of this.closeValuesData) {
-      let label = entry[0].split("T")[1].split(".")[0];
+      let label = "";
+      if (this.interval === "1min"
+        || this.interval == "5min"
+        || this.interval == "15min"
+        || this.interval == "30min"
+        || this.interval == "45min"
+        || this.interval == "1h"
+        || this.interval == "2h"
+        || this.interval == "4h"
+      ) {
+        label = entry[0].split("T")[1].split(".")[0];
+      } else {
+        label = entry[0].split("T")[0];
+      }
       this.closeValueLabels.push(label);
       this.closeValueValues.push(entry[1]);
     }
@@ -75,6 +87,11 @@ export class StocksDetailComponent implements OnInit, OnDestroy {
       this.uiManagerService.isUpdateStocksClosing.next(chartData);
       this.dataLoaded = true;
     }
+  }
+
+  setInterval(interval: string) {
+    this.interval = interval;
+    this.getStocksTimeSeriesBySymbol();
   }
 
   ngOnChanges() {

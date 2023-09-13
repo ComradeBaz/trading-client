@@ -1,10 +1,49 @@
-<div *ngIf="stockItem !== undefined">
-    <p> {{ stockItem.symbol }} </p>
-    <p> {{ stockItem.name }} </p>
-    <p> {{ stockItem.currency }} </p>
-    <p> {{ stockItem.exchange }} </p>
-    <p> {{ stockItem.mic_code }} </p>
-    <p> {{ stockItem.country }} </p>
-    <p> {{ stockItem.type }} </p>
+<div class="stock_detail" *ngIf="stockItem !== undefined">
+    <div class="stock_detail-heading">
+        <span>{{ stockItem.name }}</span>
+    </div>
+    <div class="stock_detail-buttons">
+        <button class="stock_detail-buttons-button" (click)="setInterval('1min')">1min</button>
+        <button class="stock_detail-buttons-button" (click)="setInterval('5min')">5min</button>
+        <button class="stock_detail-buttons-button" (click)="setInterval('1hour')">1hour</button>
+        <button class="stock_detail-buttons-button" (click)="setInterval('1day')">1day</button>
+    </div>
+    <div class="stock_detail-data">
+        <div class="stock_detail-data-item">
+            <span class="stock_detail-data-item-heading">Symbol</span>
+            <span>{{ stockItem.symbol }}</span>
+        </div>
+        <div class="stock_detail-data-item">
+            <span class="stock_detail-data-item-heading">Curreny</span>
+            <span>{{ stockItem.currency }}</span>
+        </div>
+        <div class="stock_detail-data-item">
+            <span class="stock_detail-data-item-heading">Exchange</span>
+            <span>{{ stockItem.exchange }}</span>
+        </div>
+        <div class="stock_detail-data-item">
+            <span class="stock_detail-data-item-heading">Country</span>
+            <span>{{ stockItem.country }}</span>
+        </div>
+        <div class="stock_detail-data-item">
+            <span class="stock_detail-data-item-heading">MIC Code</span>
+            <span>{{ stockItem.mic_code }}</span>
+        </div>
+        <div class="stock_detail-data-item">
+            <span class="stock_detail-data-item-heading">Type</span>
+            <span>{{ stockItem.type }}</span>
+        </div>
+    </div>
 </div>
 <app-chart-base *ngIf="dataLoaded" [chartLabels]="closeValueLabels" [chartData]="closeValueValues"></app-chart-base>
+
+
+<!--
+    symbol:"AMZN"
+name:"Amazon.com Inc"
+currency:"USD"
+exchange:"NASDAQ"
+mic_code:"XNGS"
+country:"United States"
+type:"Common Stock"
+-->

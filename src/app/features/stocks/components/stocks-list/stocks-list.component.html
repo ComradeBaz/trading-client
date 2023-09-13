@@ -1,7 +1,7 @@
 <div class="flex-column-container" *ngIf="stocksList.length > 0">
-    <ul class="custom-list">
+    <ul class="custom-list standard-padding">
         <li *ngFor="let stock of stocksList">
-            <app-stocks-list-item style="width: 100%;" [stockItem]="stock"></app-stocks-list-item>
+            <app-stocks-list-item [stockItem]="stock"></app-stocks-list-item>
         </li>
     </ul>
     <div>
