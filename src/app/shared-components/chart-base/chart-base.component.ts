@@ -20,7 +20,7 @@ export class ChartBaseComponent implements OnInit, OnDestroy {
   @Input() chartData: number[] = [];
   @Input() chartLabels: string[] = [];
   @Input() chartLabel: string = "";
-  @Input() backgroundColorProd: string = "#271E62";
+  @Input() backgroundColorProd: string = "#7D3854";
   backgroundColor: string = "#FDBB30";
   @Output() indexSelected = new EventEmitter<ChartDataCoordinates>();
   @Input() isShowTitle: boolean = false;
@@ -42,10 +42,6 @@ export class ChartBaseComponent implements OnInit, OnDestroy {
           this.chart.data.datasets[0].label = data.companyName;
           for (let v of data.values) {
             this.chart.data.datasets[0].data.push(v);
-            //this.chartData = data.values;
-            //this.chartLabels = data.labels;
-            
-            
           }
           this.chart?.update();
         }
