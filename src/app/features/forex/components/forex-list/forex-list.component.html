@@ -1,0 +1,11 @@
+<div class="flex-column-container" *ngIf="forexList.length > 0">
+    <ul class="custom-list standard-padding">
+        <li *ngFor="let forex of forexList">
+            <app-forex-list-item [forexItem]="forex"></app-forex-list-item>
+        </li>
+    </ul>
+    <div>
+        <button type="button" (click)="onPreviousPage()">Previous</button>
+        <button type="button" (click)="onNextPage()">Next</button>
+    </div>
+</div>

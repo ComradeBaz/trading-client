@@ -1,26 +1,25 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { StockItem } from '../../models/stock-item';
-import { StocksTimeseriesService } from '../../service/stocks-timeseries.service';
+import { Subscription } from 'rxjs';
+import { StocksTimeseriesService } from 'src/app/features/stocks/service/stocks-timeseries.service';
+import { StocksService } from 'src/app/features/stocks/service/stocks.service';
 import { ChartData } from 'src/app/shared-components/chart-base/models/chart-data';
 import { UiManagerService } from 'src/app/shared-services/ui-manager.service';
-import { Subscription } from 'rxjs';
-import { StocksService } from '../../service/stocks.service';
+import { ForexPairsItem } from '../../models/forex-pairs-item';
+import { ForexListService } from '../../service/forex-list.service';
 
 @Component({
-  selector: 'app-stocks-detail',
-  templateUrl: './stocks-detail.component.html',
-  styleUrls: ['./stocks-detail.component.scss']
+  selector: 'app-forex-detail',
+  templateUrl: './forex-detail.component.html',
+  styleUrls: ['./forex-detail.component.scss']
 })
-export class StocksDetailComponent implements OnInit, OnDestroy {
+export class ForexDetailComponent implements OnInit, OnDestroy {
 
-  @Input() stockItem: StockItem | undefined;
-
-  stockDetailSubscription: Subscription | undefined;
+  @Input() forexItem: ForexPairsItem | undefined;
 
   dataLoaded: boolean = false;
 
   interval: string = "1day";
-  outputsize: string = "30";
+  outputsize: string = "90";
 
   closeValuesData: any[] = [];
   openValuesData: any[] = [];
@@ -30,26 +29,31 @@ export class StocksDetailComponent implements OnInit, OnDestroy {
   closeValueLabels: string[] = [];
   closeValueValues: number[] = [];
 
+  forexPairDetailSubscription: Subscription | undefined;
+
   constructor(
     private stockTimeSeriesService: StocksTimeseriesService,
     private uiManagerService: UiManagerService,
+    private forexService: ForexListService,
     private stocksService: StocksService
+
   ) { }
 
   ngOnInit(): void {
-    this.stockDetailSubscription = this.stocksService.stockDetailSubject
-      .subscribe(data => {
-        if (data !== undefined && data instanceof StockItem) {
-          this.stockItem = data;
-          this.getStocksTimeSeriesBySymbol();
-        }
-      });
+    this.forexPairDetailSubscription = this.forexService.forexPairDetailSubject
+    .subscribe(data => {
+      if (data !== undefined && data instanceof ForexPairsItem) {
+        this.forexItem = data;
+        this.getForexPairTimeSeriesBySymbol();
+      }
+    });
   }
 
-  getStocksTimeSeriesBySymbol() {
-    if (this.stockItem !== undefined) {
-      this.stockTimeSeriesService.onGetStocksTimeSeriesBySymbol(this.stockItem.symbol, this.interval, this.outputsize)
+  getForexPairTimeSeriesBySymbol() {
+    if (this.forexItem !== undefined) {
+      this.stockTimeSeriesService.onGetStocksTimeSeriesBySymbol(this.forexItem.symbol, this.interval, this.outputsize)
         .subscribe(data => {
+          console.log(data);
           this.openValuesData = Object.entries(data.openValuesMap);
           this.closeValuesData = Object.entries(data.closeValuesMap);
           this.lowValuesData = Object.entries(data.lowValuesMap);
@@ -82,24 +86,24 @@ export class StocksDetailComponent implements OnInit, OnDestroy {
       this.closeValueLabels.push(label);
       this.closeValueValues.push(entry[1]);
     }
-    if (this.stockItem) {
-      const chartData: ChartData = new ChartData(this.closeValueLabels, this.closeValueValues, this.stockItem?.name);
-      this.uiManagerService.isUpdateStocksClosing.next(chartData);
+    if (this.forexItem) {
+      const chartData: ChartData = new ChartData(this.closeValueLabels, this.closeValueValues, this.forexItem?.symbol);
+      this.uiManagerService.isUpdateForexPairClosing.next(chartData);
       this.dataLoaded = true;
     }
   }
 
   setInterval(interval: string) {
     this.interval = interval;
-    this.getStocksTimeSeriesBySymbol();
+    this.getForexPairTimeSeriesBySymbol();
   }
 
   ngOnChanges() {
-    this.getStocksTimeSeriesBySymbol();
+    this.getForexPairTimeSeriesBySymbol();
   }
 
-  ngOnDestroy(): void {
-    this.stockDetailSubscription?.unsubscribe();
+  ngOnDestroy() {
+    this.forexPairDetailSubscription?.unsubscribe();
   }
 
 }

@@ -8,6 +8,7 @@ import { ChartData } from '../shared-components/chart-base/models/chart-data';
 export class UiManagerService {
 
   public isUpdateStocksClosing = new BehaviorSubject<ChartData | undefined>(undefined);
+  public isUpdateForexPairClosing = new BehaviorSubject<ChartData | undefined>(undefined);
 
   constructor() { }
 }

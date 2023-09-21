@@ -1,0 +1,18 @@
+<div *ngIf="httpError !== undefined">
+    <div>
+        {{ httpError.message }}
+    </div>
+</div>
+<div class="flex-column-container">
+    <div class="flex-column-container-row">
+        <div class="flex-column-container-row-column-thirty">
+            <app-forex-list style="width: 100%;" [forexList]="pagedForexPairsListToDisplay" (previousPageEvent)="onPreviousPageEvent($event)"
+                (nextPageEvent)="onNextPageEvent($event)">
+            </app-forex-list>
+        </div>
+        <div class="flex-column-container-row-column-seventy stardard-margin-left">
+            <app-forex-detail *ngIf="currentForexPairsItem !== undefined" [forexItem]="currentForexPairsItem">
+            </app-forex-detail>
+        </div>
+    </div>
+</div>

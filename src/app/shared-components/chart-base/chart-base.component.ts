@@ -26,6 +26,7 @@ export class ChartBaseComponent implements OnInit, OnDestroy {
   @Input() isShowTitle: boolean = false;
 
   isUpdateStocksClosingEvent: Subscription | undefined;
+  isUpdateForexPairsClosingEvent: Subscription | undefined;
   isShowChart: boolean = false;
 
   constructor(
@@ -37,15 +38,27 @@ export class ChartBaseComponent implements OnInit, OnDestroy {
     this.isUpdateStocksClosingEvent = this.uiManagerService.isUpdateStocksClosing
       .subscribe(data => {
         if (data !== undefined && this.chart) {
-          this.chart.data.datasets[0].data = [];
-          this.chart.data.labels = data.labels;
-          this.chart.data.datasets[0].label = data.companyName;
-          for (let v of data.values) {
-            this.chart.data.datasets[0].data.push(v);
-          }
-          this.chart?.update();
+          this.updateChartData(data);
         }
       });
+    this.isUpdateForexPairsClosingEvent = this.uiManagerService.isUpdateForexPairClosing
+      .subscribe(data => {
+        if (data !== undefined && this.chart) {
+          this.updateChartData(data);
+        }
+      });
+  }
+
+  updateChartData(data: any) {
+    if (data !== undefined && this.chart) {
+      this.chart.data.datasets[0].data = [];
+      this.chart.data.labels = data.labels;
+      this.chart.data.datasets[0].label = data.companyName;
+      for (let v of data.values) {
+        this.chart.data.datasets[0].data.push(v);
+      }
+      this.chart?.update();
+    }
   }
 
   createChart() {
@@ -91,6 +104,7 @@ export class ChartBaseComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.isUpdateStocksClosingEvent?.unsubscribe();
+    this.isUpdateForexPairsClosingEvent?.unsubscribe();
   }
 }
 

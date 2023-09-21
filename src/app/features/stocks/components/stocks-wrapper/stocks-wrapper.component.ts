@@ -25,12 +25,12 @@ export class StocksWrapperComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Get the list of stocks when the component loads
-    this.onListStocksByExchange("NASDAQ");
+    //this.onListStocksByExchange("NASDAQ");
     //this.onListStocks();
     // Set the selected stock item when the user chooses from the list of stocks
     this.stockDetailSubscription = this.stocksService.stockDetailSubject
       .subscribe(data => {
-        if (data !== undefined) {
+        if (data !== undefined && data instanceof StockItem) {
           this.currentStockItem = data;
         }
       });
@@ -125,7 +125,6 @@ export class StocksWrapperComponent implements OnInit, OnDestroy {
           this.getPagedListOfStocks();
         }
       }
-
     }
   }
 

@@ -9,6 +9,10 @@ import { StocksDetailComponent } from './features/stocks/components/stocks-detai
 import { StocksListItemComponent } from './features/stocks/components/stocks-list-item/stocks-list-item.component';
 import { StocksWrapperComponent } from './features/stocks/components/stocks-wrapper/stocks-wrapper.component';
 import { ChartBaseComponent } from './shared-components/chart-base/chart-base.component';
+import { ForexWrapperComponent } from './features/forex/components/forex-wrapper/forex-wrapper.component';
+import { ForexListComponent } from './features/forex/components/forex-list/forex-list.component';
+import { ForexListItemComponent } from './features/forex/components/forex-list-item/forex-list-item.component';
+import { ForexDetailComponent } from './features/forex/components/forex-detail/forex-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { ChartBaseComponent } from './shared-components/chart-base/chart-base.co
     StocksDetailComponent,
     StocksListItemComponent,
     StocksWrapperComponent,
-    ChartBaseComponent
+    ChartBaseComponent,
+    ForexWrapperComponent,
+    ForexListComponent,
+    ForexListItemComponent,
+    ForexDetailComponent
   ],
   imports: [
     BrowserModule,

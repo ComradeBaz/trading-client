@@ -12,7 +12,6 @@ export class StocksListItemComponent implements OnInit {
 
   @Input() stockItem: StockItem | undefined;
 
-  isFetching: boolean = false;
   httpError: HttpErrorResponse | undefined = undefined;
 
   constructor(

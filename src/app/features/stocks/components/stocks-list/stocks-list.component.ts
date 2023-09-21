@@ -15,7 +15,6 @@ export class StocksListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
   }
 
   onPreviousPage() {

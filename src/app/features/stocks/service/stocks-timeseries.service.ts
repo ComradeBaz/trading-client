@@ -8,7 +8,7 @@ import { Observable, interval } from 'rxjs';
 })
 export class StocksTimeseriesService {
 
-  private BASE_URL: string = "http://localhost:8080/rest/v1/timeseries/";
+  private BASE_URL: string = "http://localhost:8081/rest/v1/timeseries/";
 
   constructor(private http: HttpClient) { }
 

@@ -1,0 +1,6 @@
+<div *ngIf="forexItem !== undefined" (click)="onSelectForexPair(forexItem)">
+    <div class="stocks-list-container-row">
+        <span class="thirty-percent">{{ forexItem.currency_base }}</span>
+        <span class="fourty-percent">{{ forexItem.currency_quote }}</span>
+    </div>
+</div>

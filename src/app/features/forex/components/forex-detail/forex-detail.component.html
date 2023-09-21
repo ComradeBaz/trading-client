@@ -1,0 +1,38 @@
+<div class="stock_detail" *ngIf="forexItem !== undefined">
+    <div class="stock_detail-heading">
+        <span>{{ forexItem.symbol }}</span>
+    </div>
+    <div class="stock_detail-buttons">
+        <button class="stock_detail-buttons-button" (click)="setInterval('1min')">1min</button>
+        <button class="stock_detail-buttons-button" (click)="setInterval('5min')">5min</button>
+        <button class="stock_detail-buttons-button" (click)="setInterval('1hour')">1hour</button>
+        <button class="stock_detail-buttons-button" (click)="setInterval('1day')">1day</button>
+    </div>
+    <div class="stock_detail-data">
+        <div class="stock_detail-data-item">
+            <span class="stock_detail-data-item-heading">Symbol</span>
+            <span>{{ forexItem.symbol }}</span>
+        </div>
+        <div class="stock_detail-data-item">
+            <span class="stock_detail-data-item-heading">Curreny Base</span>
+            <span>{{ forexItem.currency_base }}</span>
+        </div>
+        <div class="stock_detail-data-item">
+            <span class="stock_detail-data-item-heading">Currency Quote</span>
+            <span>{{ forexItem.currency_quote }}</span>
+        </div>
+        <div class="stock_detail-data-item">
+            <span class="stock_detail-data-item-heading">Currency Group</span>
+            <span>{{ forexItem.currency_group }}</span>
+        </div>
+    </div>
+</div>
+<app-chart-base *ngIf="dataLoaded" [chartLabels]="closeValueLabels" [chartData]="closeValueValues"></app-chart-base>
+
+
+<!-- 
+    public symbol: string,
+        public currency_group: string,
+        public currency_base: string,
+        public currency_quote: string
+-->

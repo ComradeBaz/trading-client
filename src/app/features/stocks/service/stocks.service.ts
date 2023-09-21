@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { StockItem } from '../models/stock-item';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ForexPairsItem } from '../../forex/models/forex-pairs-item';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StocksService {
 
-  private BASE_URL: string = "http://localhost:8080/rest/v1/stocks/";
+  private BASE_URL: string = "http://localhost:8081/rest/v1/stocks/";
 
-  public stockDetailSubject = new BehaviorSubject<StockItem | undefined>(undefined);
+  public stockDetailSubject = new BehaviorSubject<StockItem | ForexPairsItem | undefined>(undefined);
 
   constructor(private http: HttpClient) { }
 
