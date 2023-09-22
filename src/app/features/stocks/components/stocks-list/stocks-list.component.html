@@ -1,11 +1,11 @@
-<div class="flex-column-container" *ngIf="stocksList.length > 0">
+<div class="flex-column-container" *ngIf="pagedStocksListToDisplay.length > 0">
     <ul class="custom-list standard-padding">
-        <li *ngFor="let stock of stocksList">
+        <li *ngFor="let stock of pagedStocksListToDisplay">
             <app-stocks-list-item [stockItem]="stock"></app-stocks-list-item>
         </li>
     </ul>
     <div>
-        <button type="button" (click)="onPreviousPage()">Previous</button>
-        <button type="button" (click)="onNextPage()">Next</button>
+        <button type="button" (click)="onPreviousPageEvent(true)">Previous</button>
+        <button type="button" (click)="onNextPageEvent(true)">Next</button>
     </div>
 </div>

@@ -37,9 +37,12 @@ export class StocksDetailComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    console.log("detail");
     this.stockDetailSubscription = this.stocksService.stockDetailSubject
       .subscribe(data => {
-        if (data !== undefined && data instanceof StockItem) {
+        console.log(data);
+        if (data !== undefined) {
+          console.log(data);
           this.stockItem = data;
           this.getStocksTimeSeriesBySymbol();
         }

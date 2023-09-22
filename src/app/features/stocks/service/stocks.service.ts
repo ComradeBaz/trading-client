@@ -11,7 +11,7 @@ export class StocksService {
 
   private BASE_URL: string = "http://localhost:8081/rest/v1/stocks/";
 
-  public stockDetailSubject = new BehaviorSubject<StockItem | ForexPairsItem | undefined>(undefined);
+  public stockDetailSubject = new BehaviorSubject<StockItem | undefined>(undefined);
 
   constructor(private http: HttpClient) { }
 

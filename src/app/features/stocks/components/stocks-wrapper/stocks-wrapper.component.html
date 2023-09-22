@@ -1,18 +1,15 @@
-<div *ngIf="httpError !== undefined">
+<!-- <div *ngIf="httpError !== undefined">
     <div>
         {{ httpError.message }}
     </div>
-</div>
+</div> -->
 <div class="flex-column-container">
     <div class="flex-column-container-row">
         <div class="flex-column-container-row-column-thirty">
-            <app-stocks-list style="width: 100%;" [stocksList]="pagedStocksListToDisplay" (previousPageEvent)="onPreviousPageEvent($event)"
-                (nextPageEvent)="onNextPageEvent($event)">
-            </app-stocks-list>
+            <app-stocks-list style="width: 100%;"></app-stocks-list>
         </div>
         <div class="flex-column-container-row-column-seventy stardard-margin-left">
-            <app-stocks-detail *ngIf="currentStockItem !== undefined" [stockItem]="currentStockItem">
-            </app-stocks-detail>
+            <app-stocks-detail></app-stocks-detail>
         </div>
     </div>
 </div>
